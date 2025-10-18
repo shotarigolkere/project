@@ -1,4 +1,5 @@
-// ლოკალური მონაცემთა ბაზის იმიტაცია
+// src/api/carsData.js
+
 const carsDataArray = [
   {
     id: 1,
@@ -8,8 +9,8 @@ const carsDataArray = [
     price: 18500,
     mileage: 45000,
     fuelType: "ბენზინი",
-    // დროებითი ფოტოები, რომლებიც ჩაიტვირთება ლოკალურად
-    imageUrl: "https://via.placeholder.com/300x200/4682B4/FFFFFF?text=Toyota+Camry", 
+    // 💥 საიმედო ფოტო ლინკი 1
+    imageUrl: "https://picsum.photos/id/111/400/220", 
     description: "კარგ მდგომარეობაში, რეგულარული სერვისით. მცირე დაზიანება.",
   },
   {
@@ -20,7 +21,8 @@ const carsDataArray = [
     price: 24000,
     mileage: 30000,
     fuelType: "დიზელი",
-    imageUrl: "https://via.placeholder.com/300x200/36454F/FFFFFF?text=Mercedes+C-Class",
+    // 💥 საიმედო ფოტო ლინკი 2
+    imageUrl: "https://picsum.photos/id/111/400/220", 
     description: "სრული კომპლექტაცია, უპრობლემო. გერმანიიდან ჩამოყვანილი.",
   },
   {
@@ -31,7 +33,8 @@ const carsDataArray = [
     price: 55000,
     mileage: 12000,
     fuelType: "ჰიბრიდი",
-    imageUrl: "https://via.placeholder.com/300x200/8B0000/FFFFFF?text=BMW+X5",
+    // 💥 საიმედო ფოტო ლინკი 3
+    imageUrl: "https://picsum.photos/id/111/400/220", 
     description: "ახალივით, გარანტიით. მაქსიმალური კომპლექტაცია.",
   },
   {
@@ -42,19 +45,14 @@ const carsDataArray = [
     price: 9500,
     mileage: 80000,
     fuelType: "ბენზინი",
-    imageUrl: "https://via.placeholder.com/300x200/556B2F/FFFFFF?text=Honda+Civic",
+    // 💥 საიმედო ფოტო ლინკი 4
+    imageUrl: "https://picsum.photos/id/111/400/220", 
     description: "ეკონომიური და გამძლე მანქანა. კარგი საბურავებით.",
   }
 ];
 
-/**
- * Fake API-ს ფუნქციის იმიტაცია, რომელიც მასივს აბრუნებს Promise-ის გამოყენებით.
- * ეს იმიტაცია აუცილებელია, რომ React კომპონენტები "ფიქრობდნენ", რომ ქსელური მოთხოვნა მიდის.
- * @returns {Promise<Array>} მანქანების სია
- */
 export const fetchCars = () => {
   return new Promise((resolve) => {
-    // 500ms დაყოვნება, ქსელის ლოდინის იმიტაციისთვის
     setTimeout(() => {
       resolve(carsDataArray);
     }, 500);

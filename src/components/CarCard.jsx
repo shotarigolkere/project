@@ -3,6 +3,7 @@ import React from 'react';
 const CarCard = ({ car }) => {
   return (
     <div className="car-card">
+      {/* 💥 კრიტიკული: img ტეგი სწორად იღებს URL-ს */}
       <img src={car.imageUrl} alt={`${car.brand} ${car.model}`} className="car-image" />
       <div className="car-details">
         <h3>{car.brand} {car.model} ({car.year})</h3>
@@ -15,4 +16,5 @@ const CarCard = ({ car }) => {
   );
 };
 
+// 💥 კრიტიკული: Default ექსპორტი, რათა იმპორტი home/haus-ში სწორად იმუშაოს
 export default CarCard;
