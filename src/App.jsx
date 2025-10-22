@@ -5,6 +5,7 @@ import Home from './pages/home';      // მთავარი გვერდ�
 import Regis from './pages/regis';    // შესვლის გვერდი
 import Register from './pages/Register'; // რეგისტრაციის გვერდი
 import { AuthProvider } from './context/AuthContext';
+import Product from './pages/product';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="/login" element={<Regis />} />
             <Route path="/register" element={<Register />} />
             <Route path="/sell-car" element={<h1>მანქანის განთავსების ფორმა (TODO)</h1>} />
+            <Route path="/product/:id" element={<Product />} />
           </Routes>
         </div>
       </Router>

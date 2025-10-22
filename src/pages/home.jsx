@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import CarCard from '../components/CarCard';
 import { fetchCars } from '../api/carsData'; // ლოკალური მონაცემების იმპორტი
-
+import { Link } from 'react-router-dom';
 const Home = () => {
   const [cars, setCars] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -36,7 +36,9 @@ const Home = () => {
       <h1>გაყიდვაში არსებული ავტომობილები</h1>
       <div className="car-list">
         {cars.map(car => (
-          <CarCard key={car.id} car={car} />
+          <Link to={`/product/${car.id}`}>
+            <CarCard  key={car.id} car={car} />
+          </Link>
         ))}
       </div>
     </div>

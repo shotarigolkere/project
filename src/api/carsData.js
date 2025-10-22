@@ -58,3 +58,17 @@ export const fetchCars = () => {
     }, 500);
   });
 };
+
+export const fetchCarById = (id) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const car = carsDataArray.find(c => c.id.toString() === id);
+      
+      if (car) {
+        resolve(car);
+      } else {
+        reject(new Error(`Car with ID '${id}' was not found.`));
+      }
+    }, 500); 
+  });
+};
