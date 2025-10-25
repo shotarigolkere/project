@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className="app-footer">
       <div className="footer-content">
-        <p>&copy; {new Date().getFullYear()} My Car App | ყველა უფლება დაცულია.</p>
+        <p>&copy; {new Date().getFullYear()} AutoPortal | ყველა უფლება დაცულია.</p>
         <div className="footer-links">
           <a href="/about">ჩვენს შესახებ</a>
           <a href="/contact">კონტაქტი</a>
