@@ -12,7 +12,7 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (register(username, email, password)) {
-      navigate('/'); // მთავარ გვერდზე გადასვლა
+      navigate('/'); 
     } else {
       alert('რეგისტრაცია ვერ მოხერხდა. შეავსეთ ყველა ველი.');
     }

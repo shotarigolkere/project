@@ -102,7 +102,7 @@ const SellCar = () => {
           value={fuelType} 
           onChange={(e) => setFuelType(e.target.value)} 
           required
-          style={inputStyle} // Apply the matching style
+          style={inputStyle}
         >
           <option value="" disabled>Select a fuel type...</option>
           <option value="ბენზინი">ბენზინი (Gasoline)</option>
@@ -126,7 +126,7 @@ const SellCar = () => {
           onChange={(e) => setDescription(e.target.value)}
           rows="4"
           placeholder="e.g., კარგ მდგომარეობაში, რეგულარული სერვისით..."
-          style={inputStyle} // Apply the matching style
+          style={inputStyle} 
           required
         ></textarea>
 

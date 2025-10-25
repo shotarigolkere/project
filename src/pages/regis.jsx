@@ -11,7 +11,7 @@ const Regis = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (login(username, password)) {
-      navigate('/'); // მთავარ გვერდზე გადასვლა
+      navigate('/');
     } else {
       alert('არასწორი მომხმარებლის სახელი ან პაროლი.');
     }
