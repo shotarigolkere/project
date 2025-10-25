@@ -1,0 +1,45 @@
+.app-footer {
+
+background-color: #333;
+color: #ffffff; 
+padding: 20px 0; 
+text-align: center;
+width: 100%;
+margin-top: auto; 
+}
+
+.footer-content {
+max-width: 1200px;
+margin: 0 auto;
+padding: 0 20px;
+display: flex;
+flex-direction: column; 
+align-items: center;
+}
+
+.footer-content p {
+margin-bottom: 10px;
+}
+
+.footer-links a {
+color: #ffffff;
+text-decoration: none;
+margin: 0 15px;
+font-size: 0.9em;
+ transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+color: #007bff; 
+}
+
+
+@media (min-width: 768px) {
+    .footer-content {
+flex-direction: row;
+justify-content: space-between;
+}
+.footer-content p {
+margin-bottom: 0;
+}
+}

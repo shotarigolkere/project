@@ -7,7 +7,7 @@ const SellCar = () => {
   const [year, setYear] = useState('');
   const [price, setPrice] = useState('');
   const [mileage, setMileage] = useState('');
-  const [fuelType, setFuelType] = useState(''); // We'll make this a dropdown
+  const [fuelType, setFuelType] = useState(''); 
   const [imageUrl, setImageUrl] = useState('');
   const [description, setDescription] = useState('');
 

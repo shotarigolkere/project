@@ -1,12 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Home from './pages/home';      // მთავარი გვერდი
-import Regis from './pages/regis';    // შესვლის გვერდი
-import Register from './pages/Register'; // რეგისტრაციის გვერდი
+import Home from './pages/home';      
+import Regis from './pages/regis';    
+import Register from './pages/Register'; 
 import { AuthProvider } from './context/AuthContext';
 import Product from './pages/product';
 import SellCar from './pages/sellCar';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -22,7 +23,10 @@ function App() {
             <Route path="/product/:id" element={<Product />} />
           </Routes>
         </div>
+
+        <Footer/>
       </Router>
+     
     </AuthProvider>
   );
 }

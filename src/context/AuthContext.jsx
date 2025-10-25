@@ -8,7 +8,7 @@ export const AuthProvider = ({ children }) => {
 
 
   const login = (username, password) => {
-    // მარტივი იმიტაცია: ნებისმიერი არა ცარიელი მონაცემი 'test'/'12345'
+
     if (username && password && (username === 'test' || password === '12345')) {
       const fakeUser = { id: 1, username: username, email: "user@example.com" };
       setUser(fakeUser);
@@ -18,7 +18,7 @@ export const AuthProvider = ({ children }) => {
     return false;
   };
 
-  // იმიტირებული რეგისტრაცია
+  
   const register = (username, email, password) => {
     if (username && email && password) {
       const fakeUser = { id: Date.now(), username, email };
@@ -29,14 +29,14 @@ export const AuthProvider = ({ children }) => {
     return false;
   };
 
-  // გასვლა
+  
   const logout = () => {
     setUser(null);
     localStorage.removeItem('user');
   };
 
   useEffect(() => {
-    // აპლიკაციის ჩატვირთვისას მომხმარებლის მდგომარეობის შემოწმება
+ 
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
       setUser(JSON.parse(storedUser));

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import CarCard from '../components/CarCard';
-import { fetchCars } from '../api/carsData'; // ლოკალური მონაცემების იმპორტი
+import { fetchCars } from '../api/carsData'; 
 import { Link } from 'react-router-dom';
 const Home = () => {
   const [cars, setCars] = useState([]);
@@ -14,7 +14,7 @@ const Home = () => {
         setCars(data);
         setLoading(false);
       } catch (err) {
-        // ეს error block-ი რეალური API-ის დროს იქნებოდა საჭირო
+   
         setError("მონაცემების ჩატვირთვა ვერ მოხერხდა.");
         setLoading(false);
       }

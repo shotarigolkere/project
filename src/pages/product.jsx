@@ -34,7 +34,7 @@ function Product() {
     minWidth: '300px'
   };
 
-  // 3. Styles for the right (details) column
+
   const detailsColumnStyle = {
     flex: '1 1 40%' 
   };
