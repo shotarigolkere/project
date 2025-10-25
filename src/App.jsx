@@ -8,6 +8,7 @@ import { AuthProvider } from './context/AuthContext';
 import Product from './pages/product';
 import SellCar from './pages/sellCar';
 import Footer from './components/Footer';
+import AboutUs from './pages/AboutUs';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/sell-car" element={<SellCar />} />
             <Route path="/product/:id" element={<Product />} />
+            <Route path="/about" element={<AboutUs />} />
           </Routes>
         </div>
 
