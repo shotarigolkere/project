@@ -83,11 +83,46 @@ export default function useCars() {
     }
   }, []);
 
+  // add a new car to cache (localStorage) and state
+  const addCar = useCallback(async (newCar) => {
+    // prepare current list (prefer state, fallback to storage)
+    let current = [];
+    try {
+      const cached = localStorage.getItem(STORAGE_KEY);
+      current = cached ? JSON.parse(cached) : (cars || []);
+    } catch (e) {
+      current = cars || [];
+    }
+
+    // generate an id when missing
+    const nextId = newCar && newCar.id
+      ? newCar.id
+      : (current.length ? Math.max(...current.map(c => Number(c.id) || 0)) + 1 : 1);
+
+    const carToAdd = { ...newCar, id: nextId };
+
+    const updated = [...current, carToAdd];
+
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+    } catch (e) {
+      // ignore storage errors
+    }
+
+    setCars((prev) => {
+      if (prev && prev.find(p => String(p.id) === String(carToAdd.id))) return prev;
+      return prev ? [...prev, carToAdd] : [carToAdd];
+    });
+
+    return carToAdd;
+  }, [cars]);
+
   return {
     cars,
     loading,
     error,
     getCarById,
     refresh,
+    addCar,
   };
 }
