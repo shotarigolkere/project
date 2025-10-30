@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { fetchCarById } from '../api/carsData'; 
+import useCars from '../hooks/useCars';
 
 function Product() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const { getCarById } = useCars();
 
   useEffect(() => {
     setLoading(true);
     setError(null);
-    fetchCarById(id)
+    getCarById(id)
       .then(data => setProduct(data))
       .catch(err => setError(err.message))
       .finally(() => setLoading(false));

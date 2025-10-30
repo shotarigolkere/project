@@ -1,7 +1,10 @@
-import { useState, useEffect, useCallback } from 'react';
-import { fetchCars as apiFetchCars, fetchCarById as apiFetchCarById } from '../api/carsData';
+import { useState, useEffect, useCallback } from "react";
+import {
+  fetchCars as apiFetchCars,
+  fetchCarById as apiFetchCarById,
+} from "../api/carsData";
 
-const STORAGE_KEY = 'cars';
+const STORAGE_KEY = "cars";
 
 export default function useCars() {
   const [cars, setCars] = useState([]);
@@ -22,12 +25,10 @@ export default function useCars() {
           setCars(data);
           try {
             localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-          } catch (e) {
-          
-          }
+          } catch (e) {}
         }
       } catch (err) {
-        setError('მონაცემების ჩატვირთვა ვერ მოხერხდა.');
+        setError("მონაცემების ჩატვირთვა ვერ მოხერხდა.");
       } finally {
         setLoading(false);
       }
@@ -42,10 +43,12 @@ export default function useCars() {
       if (cached) {
         const parsed = JSON.parse(cached);
         const found = parsed.find((c) => c.id.toString() === id.toString());
+        console.log(" found from cache:", found);
         if (found) return found;
       }
     } catch (e) {
-    }
+      
+    } 
 
     const car = await apiFetchCarById(id.toString());
 
@@ -74,7 +77,7 @@ export default function useCars() {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
       } catch (e) {}
     } catch (err) {
-      setError('მონაცემების ჩატვირთვა ვერ მოხერხდა.');
+      setError("მონაცემების ჩატვირთვა ვერ მოხერხდა.");
     } finally {
       setLoading(false);
     }
