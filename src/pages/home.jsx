@@ -2,26 +2,9 @@ import React, { useState, useEffect } from 'react';
 import CarCard from '../components/CarCard';
 import { fetchCars } from '../api/carsData'; 
 import { Link } from 'react-router-dom';
+import useCars from '../hooks/useCars';
 const Home = () => {
-  const [cars, setCars] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const loadCars = async () => {
-      try {
-        const data = await fetchCars();
-        setCars(data);
-        setLoading(false);
-      } catch (err) {
-   
-        setError("მონაცემების ჩატვირთვა ვერ მოხერხდა.");
-        setLoading(false);
-      }
-    };
-
-    loadCars();
-  }, []);
+  const {cars, error, loading} = useCars()
 
   if (loading) {
     return <div className="loading-state">მანქანები იტვირთება...</div>;
