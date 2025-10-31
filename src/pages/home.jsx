@@ -1,8 +1,11 @@
+// --- home.jsx ---
+
 import React, { useState, useEffect } from 'react';
 import CarCard from '../components/CarCard';
 import { fetchCars } from '../api/carsData'; 
 import { Link } from 'react-router-dom';
 import useCars from '../hooks/useCars';
+
 const Home = () => {
   const {cars, error, loading} = useCars()
 
@@ -19,9 +22,13 @@ const Home = () => {
       <h1>გაყიდვაში არსებული ავტომობილები</h1>
       <div className="car-list">
         {cars.map(car => (
-          <Link to={`/product/${car.id}`}>
-            <CarCard  key={car.id} car={car} />
+
+          /* --- key={car.id} გადმოვიდა Link-ზე --- */
+          <Link key={car.id} to={`/product/${car.id}`}>
+            <CarCard car={car} /> 
           </Link>
+          /* ------------------------------------- */
+
         ))}
       </div>
     </div>

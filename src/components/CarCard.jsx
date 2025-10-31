@@ -1,10 +1,21 @@
+// --- CarCard.jsx ---
+
 import React from 'react';
 
 const CarCard = ({ car }) => {
   return (
     <div className="car-card">
- 
-      <img src={car.imageUrl} alt={`${car.brand} ${car.model}`} className="car-image" />
+
+      {/* --- აქ გასწორდა 3 რამ: width, height, fetchPriority (დიდი P) --- */}
+      <img 
+        src={car.imageUrl} 
+        alt={`${car.brand} ${car.model}`} 
+        fetchPriority="high" 
+        width="400"
+        height="220"
+      />
+      {/* ----------------------------------------------------------- */}
+
       <div className="car-details">
         <h3>{car.brand} {car.model} ({car.year})</h3>
         <p className="car-price">**${car.price.toLocaleString()}**</p>
@@ -15,6 +26,5 @@ const CarCard = ({ car }) => {
     </div>
   );
 };
-
 
 export default CarCard;
