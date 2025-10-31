@@ -6,12 +6,13 @@ const CarCard = ({ car }) => {
   return (
     <div className="car-card">
       {/* --- აქ გასწორდა 3 რამ: width, height, fetchPriority (დიდი P) --- */}
-      <img 
-        src={car.imageUrl} 
-        alt={`${car.brand} ${car.model}`} 
-        fetchPriority="high" 
+      <img
+        src={car.imageUrl || 'https://picsum.photos/seed/audi/600/400.webp'}
+        alt={`${car.brand} ${car.model}`}
+        fetchPriority="high"
         width="400"
         height="220"
+        style={{ aspectRatio: '16/9' }}
       />
       {/* ----------------------------------------------------------- */}
 

@@ -8,7 +8,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="logo">
-        <Link to="/">AutoPortal</Link>
+        <Link to="/"><h1>AutoPortal</h1></Link>
       </div>
       <div className="nav-links">
         <Link to="/">მთავარი</Link>
