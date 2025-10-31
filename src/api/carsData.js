@@ -51,7 +51,7 @@ export const fetchCars = () => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(carsDataArray);
-    }, 500);
+    }, 100);
   });
 };
 
@@ -65,6 +65,6 @@ export const fetchCarById = (id) => {
       } else {
         reject(new Error(`Car with ID '${id}' was not found.`));
       }
-    }, 500); 
+    }, 100); 
   });
 };
