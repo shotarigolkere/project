@@ -5,7 +5,6 @@ import React from 'react';
 const CarCard = ({ car }) => {
   return (
     <div className="car-card">
-
       {/* --- აქ გასწორდა 3 რამ: width, height, fetchPriority (დიდი P) --- */}
       <img 
         src={car.imageUrl} 
