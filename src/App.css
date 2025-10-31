@@ -55,8 +55,8 @@
 
 /* Car List / Card სტილები */
 .car-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 25px;
   margin-top: 30px;
 }
@@ -146,4 +146,11 @@
   text-align: center;
   padding: 50px;
   font-size: 1.2em;
+}
+
+
+.layout {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
 }

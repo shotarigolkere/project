@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import {
   fetchCars as apiFetchCars,
   fetchCarById as apiFetchCarById,
@@ -20,16 +20,17 @@ export default function useCars() {
         if (cached) {
           const parsed = JSON.parse(cached);
           setCars(parsed);
+          setLoading(false);
         } else {
           const data = await apiFetchCars();
           setCars(data);
           try {
             localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
           } catch (e) {}
+          setLoading(false);
         }
       } catch (err) {
         setError("მონაცემების ჩატვირთვა ვერ მოხერხდა.");
-      } finally {
         setLoading(false);
       }
     };
@@ -83,9 +84,7 @@ export default function useCars() {
     }
   }, []);
 
-  // add a new car to cache (localStorage) and state
   const addCar = useCallback(async (newCar) => {
-    // prepare current list (prefer state, fallback to storage)
     let current = [];
     try {
       const cached = localStorage.getItem(STORAGE_KEY);
@@ -94,7 +93,6 @@ export default function useCars() {
       current = cars || [];
     }
 
-    // generate an id when missing
     const nextId = newCar && newCar.id
       ? newCar.id
       : (current.length ? Math.max(...current.map(c => Number(c.id) || 0)) + 1 : 1);
@@ -105,9 +103,7 @@ export default function useCars() {
 
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
-    } catch (e) {
-      // ignore storage errors
-    }
+    } catch (e) {}
 
     setCars((prev) => {
       if (prev && prev.find(p => String(p.id) === String(carToAdd.id))) return prev;
@@ -117,8 +113,10 @@ export default function useCars() {
     return carToAdd;
   }, [cars]);
 
+  const memoizedCars = useMemo(() => cars, [cars]);
+
   return {
-    cars,
+    cars: memoizedCars,
     loading,
     error,
     getCarById,

@@ -1,20 +1,16 @@
-// --- CarCard.jsx ---
-
 import React from 'react';
 
-const CarCard = ({ car }) => {
+const CarCard = React.memo(({ car }) => {
   return (
     <div className="car-card">
-      {/* --- აქ გასწორდა 3 რამ: width, height, fetchPriority (დიდი P) --- */}
       <img
-        src={car.imageUrl || 'https://picsum.photos/seed/audi/600/400.webp'}
+        src={'car.webp'}
         alt={`${car.brand} ${car.model}`}
         fetchPriority="high"
         width="400"
         height="220"
         style={{ aspectRatio: '16/9' }}
       />
-      {/* ----------------------------------------------------------- */}
 
       <div className="car-details">
         <h3>{car.brand} {car.model} ({car.year})</h3>
@@ -25,6 +21,6 @@ const CarCard = ({ car }) => {
       </div>
     </div>
   );
-};
+});
 
 export default CarCard;

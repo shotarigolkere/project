@@ -1,9 +1,13 @@
-import React, { useContext } from 'react';
+import React, { useContext, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 
-const Navbar = () => {
+const Navbar = React.memo(() => {
   const { user, logout } = useContext(AuthContext);
+
+  const handleLogout = useCallback(() => {
+    logout();
+  }, [logout]);
 
   return (
     <nav className="navbar">
@@ -17,7 +21,7 @@ const Navbar = () => {
         {user ? (
           <div className="user-info">
             <span>გამარჯობა, {user.username}</span>
-            <button onClick={logout} className="logout-btn">გასვლა</button>
+            <button onClick={handleLogout} className="logout-btn">გასვლა</button>
           </div>
         ) : (
           <>
@@ -28,6 +32,6 @@ const Navbar = () => {
       </div>
     </nav>
   );
-};
+});
 
 export default Navbar;

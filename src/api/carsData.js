@@ -1,5 +1,3 @@
-// --- src/api/carsData.js ---
-
 const carsDataArray = [
   {
     id: 1,
@@ -9,7 +7,7 @@ const carsDataArray = [
     price: 18500,
     mileage: 45000,
     fuelType: "ბენზინი",
-    imageUrl: "/car.webp", // <-- "public/" მოშორდა
+    imageUrl: "/car.webp",
     description: "კარგ მდგომარეობაში...",
   },
   {
@@ -20,31 +18,10 @@ const carsDataArray = [
     price: 24000,
     mileage: 30000,
     fuelType: "დიზელი",
-    imageUrl: "/car.webp", // <-- "public/" მოშორდა
+    imageUrl: "/car.webp",
     description: "სრული კომპლექტაცია...",
   },
-  {
-    id: 3,
-    brand: "BMW",
-    model: "X5",
-    year: 2022,
-    price: 55000,
-    mileage: 12000,
-    fuelType: "ჰიბრიდი",
-    imageUrl: "/car.webp", // <-- "public/" მოშორდა
-    description: "ახალივით, გარანტიით...",
-  },
-  {
-    id: 4,
-    brand: "Honda",
-    model: "Civic",
-    year: 2016,
-    price: 9500,
-    mileage: 80000,
-    fuelType: "ბენზინი",
-    imageUrl: "/car.webp", // <-- "public/" მოშორდა
-    description: "ეკონომიური და გამძლე...",
-  }
+
 ];
 
 export const fetchCars = () => {
@@ -65,6 +42,6 @@ export const fetchCarById = (id) => {
       } else {
         reject(new Error(`Car with ID '${id}' was not found.`));
       }
-    }, 100); 
+    }, 1500); 
   });
 };

@@ -1,6 +1,4 @@
-// --- Product.jsx ---
-
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import useCars from '../hooks/useCars';
 
@@ -11,16 +9,23 @@ function Product() {
   const [error, setError] = useState(null);
   const { getCarById } = useCars();
 
-  useEffect(() => {
+  const loadProduct = useCallback(async () => {
     setLoading(true);
     setError(null);
-    getCarById(id)
-      .then(data => setProduct(data))
-      .catch(err => setError(err.message))
-      .finally(() => setLoading(false));
-  }, [id]);
+    try {
+      const data = await getCarById(id);
+      setProduct(data);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  }, [id, getCarById]);
 
-  // ... (აქ შენი სტილები იგივე რჩება) ...
+  useEffect(() => {
+    loadProduct();
+  }, [loadProduct]);
+
   const productPageStyle = { maxWidth: '900px', margin: '50px auto', padding: '30px', backgroundColor: 'white', borderRadius: '8px', boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)', display: 'flex', gap: '30px' };
   const imageColumnStyle = { flex: '1 1 60%', minWidth: '300px' };
   const detailsColumnStyle = { flex: '1 1 40%' };
@@ -32,23 +37,18 @@ function Product() {
   return (
     <div style={productPageStyle}>
       <div style={imageColumnStyle}>
-
-        {/* --- აქაც დაემატა width, height, fetchPriority (დიდი P) --- */}
         <img
           src={product.imageUrl}
           alt={`${product.brand} ${product.model}`}
-          width="400"  /* <-- დარწმუნდი, რომ ეს ზომა სწორია */
-          height="220" /* <-- დარწმუნდი, რომ ეს ზომა სწორია */
+          width="400"
+          height="220"
           fetchPriority="high"
           className="car-image"
           style={{ height: 'auto', width: '100%', borderRadius: '8px' }}
         />
-        {/* ---------------------------------------------------- */}
-        
       </div>
 
       <div style={detailsColumnStyle}>
-        {/* ... (დანარჩენი კოდი იგივე რჩება) ... */}
         <h1 style={{ marginTop: 0 }}>{product.brand} {product.model}</h1>
         <div className="car-price" style={{ fontSize: '2.2em', marginBottom: '20px' }}>
           ${product.price.toLocaleString()}
